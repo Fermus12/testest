@@ -22,3 +22,15 @@
 # All that matters is that your final data is written to an SQLite database
 # called "data.sqlite" in the current working directory which has at least a table
 # called "data".
+
+import requests
+
+# We're always asking for json because it's the easiest to deal with
+morph_api_url = "https://api.morph.io/CookieMichal/us-proxy/data.json"
+
+# Keep this key secret!
+morph_api_key = "[api_key]"
+
+r = requests.get(morph_api_url, params={'key': morph_api_key,'query': "select * from "+'data'+" limit 10"})
+
+print(r.json())
